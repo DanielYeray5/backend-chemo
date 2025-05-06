@@ -10,6 +10,7 @@ const app = express();
 const PORT = 3000;
 
 // Conectar a la base de datos MongoDB
+// mongodb://atlas-sql-681977c89a385e470ffa733d-i9olts.a.query.mongodb.net/sample_mflix?ssl=true&authSource=admin'
 mongoose.connect('mongodb://localhost:27018/chemo_autos', {
     useNewUrlParser: true,
     useUnifiedTopology: true
