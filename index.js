@@ -18,6 +18,7 @@ mongoose.connect('mongodb://localhost:27018/chemo_autos', {
     console.log('Conexión a MongoDB exitosa');
 }).catch((error) => {
     console.error('Error al conectar a MongoDB:', error);
+    console.log('Por favor, asegúrese de que la base de datos esté en funcionamiento.');
 });
 
 // Middleware para parsear JSON y habilitar CORS
