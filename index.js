@@ -34,9 +34,6 @@ app.use(morgan('combined'));
 // Servir archivos estáticos del frontend
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-// Ruta para servir el index.html por defecto
-// Ruta para servir el carrito.html
-
 // Reiniciar el carrito al iniciar el servidor
 let carrito = [];
 
