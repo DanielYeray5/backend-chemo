@@ -73,6 +73,7 @@ app.post('/comprar', (req, res) => {
 // Endpoint para confirmar la compra y reiniciar el carrito
 app.post('/confirmar-compra', async (req, res) => {
     const { nombre, correo, carrito: carritoCompra } = req.body;
+    console.log('Carrito recibido en /confirmar-compra:', JSON.stringify(carritoCompra, null, 2));
     if (!nombre || !correo || !Array.isArray(carritoCompra)) {
         return res.status(400).json({ message: 'Nombre, correo y carrito son obligatorios' });
     }
@@ -80,10 +81,19 @@ app.post('/confirmar-compra', async (req, res) => {
     // Actualizar el stock de cada producto comprado
     try {
         for (const producto of carritoCompra) {
-            await Car.updateOne(
-                { name: producto.name },
-                { $inc: { stock: -Math.abs(producto.cantidad || 1) } }
-            );
+            // Buscar el auto actual en la base de datos
+            const car = await Car.findOne({ name: producto.name });
+            if (!car) {
+                return res.status(404).json({ message: `Auto no encontrado: ${producto.name}` });
+            }
+            // Validar que hay suficiente stock antes de restar
+            const cantidadRestar = Math.abs(producto.cantidad || 1);
+            if (car.stock < cantidadRestar) {
+                return res.status(400).json({ message: `Stock insuficiente para ${producto.name}. Stock actual: ${car.stock}` });
+            }
+            car.stock -= cantidadRestar;
+            await car.save();
+            console.log(`Restado ${cantidadRestar} a ${producto.name}. Nuevo stock: ${car.stock}`);
         }
     } catch (error) {
         console.error('Error al actualizar el stock:', error);
