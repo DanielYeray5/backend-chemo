@@ -7,55 +7,64 @@ use chemo_autos;
             name: "Chevrolet Camaro ZL1 Panther",
             description: "Año: 2024",
             price: 2314900,
-            image: "/images/Chevrolet_Camaro_ZL1_Panther.jpg"
+            image: "/images/Chevrolet_Camaro_ZL1_Panther.jpg",
+            stock: 15
             },
         {
             name: "Ford Mustang GT",
             description: "Año: 2025",
             price: 1150000,
-            image: "/images/FORD_MUSTANG_GT.png"
+            image: "/images/FORD_MUSTANG_GT.png",
+            stock: 18
             },
         {
             name: "Porsche 911 Carrera",
             description: "Año: 2025",
             price: 2500000,
-            image: "/images/Porsche_911_Carrera.jpg"
+            image: "/images/Porsche_911_Carrera.jpg",
+            stock: 12
             },
         {
             name: "BMW M4 Competition",
             description: "Año: 2025",
             price: 2300000,
-            image: "/images/BMW_M4_Competition.jpg"
+            image: "/images/BMW_M4_Competition.jpg",
+            stock: 17
             },
         {
             name: "SUBARU BRZ Limited 6MT",
             description: "Año: 2024",
             price: 769900,
-            image: "/images/SUBARU_BRZ.jpg"
+            image: "/images/SUBARU_BRZ.jpg",
+            stock: 13
             },
         {
             name: "Nissan Z Touring AT",
             description: "Año: 2024",
             price: 1377900,
-            image: "/images/NISSAN_Z.jpg"
+            image: "/images/NISSAN_Z.jpg",
+            stock: 16
             },
         {
             name: "Ford Fiesta S",
             description: "Año: 2019",
             price: 152500,
-            image: "/images/FORD_FIESTA_S.jpg"
+            image: "/images/FORD_FIESTA_S.jpg",
+            stock: 14
             },
         {
             name: "MAZDA 3 SEDÁN",
             description: "Año: 2025",
             price: 403900,
-            image: "/images/MAZDA3_SEDAN.jpg"
+            image: "/images/MAZDA3_SEDAN.jpg",
+            stock: 19
             },
         {
             name: "Honda Civic",
             description: "Año: 2025",
             price: 590900,
-            image: "/images/HONDA_CIVIC.jpg"
+            image: "/images/HONDA_CIVIC.jpg",
+            stock: 11
             }
         ]);
 
@@ -64,30 +73,35 @@ use chemo_autos;
             name: "Toyota GR86 Premium 6MT",
             description: "Año: 2024",
             price: 774900,
-            image: "/images/toyota_GR86_2024.heif"
+            image: "/images/toyota_GR86_2024.heif",
+            stock: 13
             },
         {
             name: "Chevrolet Camaro RS Coupe AT",
             description: "Año: 2024",
             price: 1356400,
-            image: "/images/CHEVROLETCAMARO.jpg"
+            image: "/images/CHEVROLETCAMARO.jpg",
+            stock: 17
             },
         {
             name: "Volkswagen Polo Trendline",
             description: "Año: 2019",
             price: 155000,
-            image: "/images/VOLKSWAGEN_POLO.jpg"
+            image: "/images/VOLKSWAGEN_POLO.jpg",
+            stock: 10
             },
         {
             name: "KIA Forte Sedán EX",
             description: "Año: 2025",
             price: 410000,
-            image: "/images/KIA_K4.jpeg"
+            image: "/images/KIA_K4.jpeg",
+            stock: 18
             },
         {
             name: "Hyundai Elantra Limited",
             description: "Año: 2025",
             price: 598500,
-            image: "/images/HYUNDAI_ELANTRA.jpg"
+            image: "/images/HYUNDAI_ELANTRA.jpg",
+            stock: 15
             }
         ]);

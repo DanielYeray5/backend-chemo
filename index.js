@@ -71,10 +71,23 @@ app.post('/comprar', (req, res) => {
 });
 
 // Endpoint para confirmar la compra y reiniciar el carrito
-app.post('/confirmar-compra', (req, res) => {
-    const { nombre, correo } = req.body;
-    if (!nombre || !correo) {
-        return res.status(400).json({ message: 'Nombre y correo son obligatorios' });
+app.post('/confirmar-compra', async (req, res) => {
+    const { nombre, correo, carrito: carritoCompra } = req.body;
+    if (!nombre || !correo || !Array.isArray(carritoCompra)) {
+        return res.status(400).json({ message: 'Nombre, correo y carrito son obligatorios' });
+    }
+
+    // Actualizar el stock de cada producto comprado
+    try {
+        for (const producto of carritoCompra) {
+            await Car.updateOne(
+                { name: producto.name },
+                { $inc: { stock: -Math.abs(producto.cantidad || 1) } }
+            );
+        }
+    } catch (error) {
+        console.error('Error al actualizar el stock:', error);
+        return res.status(500).json({ message: 'Error al actualizar el stock de los productos' });
     }
 
     // Generar la factura o procesar la compra aquí
@@ -82,7 +95,7 @@ app.post('/confirmar-compra', (req, res) => {
 
     // Reiniciar el carrito
     carrito = [];
-    res.status(200).json({ message: 'Compra confirmada y carrito reiniciado' });
+    res.status(200).json({ message: 'Compra confirmada, stock actualizado y carrito reiniciado' });
 });
 
 // Endpoint para obtener los modelos de autos desde la base de datos

@@ -16,6 +16,10 @@ const carSchema = new mongoose.Schema({
     image: {
         type: String,
         required: true
+    },
+    stock: {
+        type: Number,
+        required: true
     }
 });
 
