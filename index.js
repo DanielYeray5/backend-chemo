@@ -107,6 +107,16 @@ app.delete('/carrito', (req, res) => {
     res.status(200).json({ message: 'El carrito ha sido vaciado' });
 });
 
+// Endpoint para actualizar el carrito (PUT)
+app.put('/carrito', (req, res) => {
+    const nuevoCarrito = req.body;
+    if (!Array.isArray(nuevoCarrito)) {
+        return res.status(400).json({ message: 'El carrito debe ser un array' });
+    }
+    carrito = nuevoCarrito;
+    res.status(200).json({ message: 'Carrito actualizado', carrito });
+});
+
 // Endpoint para confirmar la compra y reiniciar el carrito
 app.post('/confirmar-compra', async (req, res) => {
     const { nombre, correo, carrito: carritoCompra } = req.body;
