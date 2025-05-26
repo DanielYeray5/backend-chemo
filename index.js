@@ -77,6 +77,26 @@ function generarFacturaPDF({ nombre, correo, carrito }) {
         doc.text(`IVA (16%): $${iva.toLocaleString('es-MX')} MXN`);
         doc.text(`Total: $${total.toLocaleString('es-MX')} MXN`);
         doc.moveDown();
+        // --- Merma ---
+        const causas = [
+            'Daño en transporte',
+            'Error de inventario',
+            'Robo parcial',
+            'Desgaste por exhibición',
+            'Falla mecánica',
+            'Pérdida administrativa',
+            'Devolución defectuosa',
+            'Accidente en traslado',
+            'Pérdida por clima',
+            'Error de proveedor'
+        ];
+        const merma = Math.floor(Math.random() * 10) + 1;
+        const causa = causas[Math.floor(Math.random() * causas.length)];
+        doc.moveDown();
+        doc.fontSize(14).text('Merma', { underline: true });
+        doc.fontSize(12).text(`Cantidad: ${merma}`);
+        doc.text(`Causa probable: ${causa}`);
+        doc.moveDown();
         doc.fontSize(14).text('¡Gracias por tu compra en SuperCars!', { align: 'center' });
         doc.end();
     });

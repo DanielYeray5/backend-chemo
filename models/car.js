@@ -5,7 +5,7 @@ const carSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    description: {
+    year: {
         type: String,
         required: true
     },
